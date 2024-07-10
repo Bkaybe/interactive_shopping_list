@@ -37,3 +37,10 @@ const createAListItem = (item) => {
   addText(li, item);
   appendChild(li, ol);
 };
+
+const addItem = (e) => {
+  e.preventDefault();
+  console.dir(e.target[0].value);
+};
+const form = select("form");
+listen(form, "submit", addItem);
