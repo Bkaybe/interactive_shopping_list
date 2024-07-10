@@ -27,6 +27,7 @@ const shoppingList = ["Milk", "Tea"];
 const ol = select("ol");
 
 const displayItems = () => {
+  ol.innerHTML = "";
   shoppingList.forEach(createAListItem);
 };
 
@@ -40,7 +41,18 @@ const createAListItem = (item) => {
 
 const addItem = (e) => {
   e.preventDefault();
-  console.dir(e.target[0].value);
+  shoppingList.push(e.target[0].value);
+
+  displayItems();
+  form.reset();
 };
 const form = select("form");
 listen(form, "submit", addItem);
+
+const clearlist = () => {
+  shoppingList.length = 0;
+  displayItems();
+};
+
+const deleteButton = select(".delete");
+listen(deleteButton, "click", clearlist);
